@@ -1,0 +1,128 @@
+{{#partial "content"}}
+
+    {{#if gameOver}}
+        <h3>Current bet: {{player.currentBet}}</h3>
+        <div class="row">
+            <div class="col-md-6">
+
+                <h3>{{player.name}}'s hand:</h3>
+                {{#each game.playerHand}}
+                    <h4>{{this}}</h4>
+                {{/each}}
+                <h3>Value: {{playerValue}}</h3>
+            </div>
+            <div class="col-md-6">
+                <h3>Dealer's hand:</h3>
+                {{#each game.dealerHand}}
+                    <h4>{{this}}</h4>
+                {{/each}}
+                <h3>Value: {{dealerValue}}</h3>
+            </div>
+        </div>
+        {{#if checkBlackjack }}
+            <h2>Congratulations! you got a BlackJack. You Win!</h2>
+        {{else}}
+            {{#if playerBust}}
+                <h2>You busted!</h2>
+            {{else}}
+                {{#if dealerBust}}
+                    <h2>The dealer busted! You Win</h2>
+                {{else}}
+                    {{#if playerWin}}
+                        <h2>You won!</h2>
+                    {{else}}
+                        <h2>You Lost!</h2>
+                    {{/if}}
+                {{/if}}
+            {{/if}}
+        {{/if}}
+
+        <h3>Your current balance: ${{player.money}}</h3>
+        <h3><a href="/blackjack">Play again?</a></h3>
+        <h3><a href="/">Home</a></h3>
+
+    {{else}}
+        {{#if player.hasBet}}
+            <h3>Current bet: {{player.currentBet}}</h3>
+           <div class="row">
+               <div class="col-md-6">
+
+                   <h3>{{player.name}}'s hand:</h3>
+                   {{#each game.playerHand}}
+                       <h4>{{this}}</h4>
+                   {{/each}}
+                   <h3>Value: {{playerValue}}</h3>
+               </div>
+               <div class="col-md-6">
+                   <h3>The dealer is showing</h3>
+                   <h4>{{dealerCard}}</h4>
+               </div>
+           </div>
+            <p>Would you like to hit or stay?</p>
+            <form action="/blackjack" method="post">
+                <select name="playerAction" id="playerAction">
+                    <option value="stay">Stay</option>
+                    <option value="hit">Hit</option>
+                </select>
+                <button type="submit" class="btn, btn-info">Go!</button>
+            </form>
+
+        {{else}}
+            <h3>Welcome to Blackjack {{player.name}}</h3>
+            {{#if invalidBet}}
+                <h4>Your bet cannot be greater than your current balance!</h4>
+            {{/if}}
+            <h4>You have ${{player.money}} what would you like to bet?</h4>
+            <form action="/blackjack" method="post">
+                <input type="number" name="playerBet" id="playerBet">
+                <button type="submit" class="btn btn-info">Deal</button>
+            </form>
+        {{/if}}
+    {{/if}}
+
+    <!--{{#if player.hasBet}}-->
+        <!--<h3>Current bet: {{player.currentBet}}</h3>-->
+        <!--<h3>{{player.name}}'s hand:</h3>-->
+        <!--{{#each game.playerHand}}-->
+            <!--<h4>{{this}}</h4>-->
+        <!--{{/each}}-->
+        <!--{{#if checkBlackjack }}-->
+            <!--<h2>Congratulations! you got a BlackJack. You Win!</h2>-->
+            <!--<h3>Your current balance: ${{player.money}}</h3>-->
+            <!--<h3><a href="/blackjack">Play again?</a></h3>-->
+            <!--<h3><a href="/">Home</a></h3>-->
+        <!--{{else}}-->
+            <!--{{#if playerBust}}-->
+                <!--<h2>You busted!</h2>-->
+                <!--<h3>Your current balance: ${{player.money}}</h3>-->
+                <!--<h3><a href="/blackjack">Play again?</a></h3>-->
+                <!--<h3><a href="/">Home</a></h3>-->
+
+            <!--{{else}}-->
+                <!--<h3>The dealer is showing</h3>-->
+                <!--<h4>{{dealerCard}}</h4>-->
+                <!--<p>Would you like to hit or stay?</p>-->
+                <!--<form action="/blackjack" method="post">-->
+                    <!--<select name="playerAction" id="playerAction">-->
+                    <!--<option value="stay">Stay</option>-->
+                    <!--<option value="hit">Hit</option>-->
+                <!--</select>-->
+                    <!--<button type="submit" class="btn, btn-info">Go!</button>-->
+                <!--</form>-->
+            <!--{{/if}}-->
+        <!--{{/if}}-->
+
+
+
+    {{else}}
+        <h3>Welcome to Blackjack {{player.name}}</h3>
+        <h4>You have ${{player.money}} what would you like to bet?</h4>
+        <form action="/blackjack" method="post">
+            <input type="number" name="playerBet" id="playerBet">
+            <button type="submit" class="btn btn-info">Deal</button>
+        </form>
+    {{/if}}
+
+{{/partial}}
+
+{{> layout.hbs}}

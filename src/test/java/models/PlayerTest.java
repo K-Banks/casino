@@ -26,6 +26,24 @@ public class PlayerTest {
     }
 
     @Test
+    public void playerBetValueIsAssigned() {
+        Player testPlayer = new Player();
+        testPlayer.setCurrentBet(45);
+        assertEquals(45, testPlayer.getCurrentBet());
+    }
+    @Test
+    public void playerHasBetValueIsAssigned() {
+        Player testPlayer = new Player();
+        assertEquals(false, testPlayer.isHasBet());
+    }
+    @Test
+    public void setHasBetChangesHasBetValue() {
+        Player testPlayer = new Player();
+        testPlayer.setHasBet(true);
+        assertEquals(true, testPlayer.isHasBet());
+    }
+
+    @Test
     public void changeMoney_returnsNewMoneyTotal_55() {
         Player testPlayer = new Player();
         testPlayer.changeMoney(-45);

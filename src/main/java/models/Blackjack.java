@@ -11,7 +11,13 @@ public class Blackjack {
     private List<String> playerHand = new ArrayList<>();
     private List<String> secondHand = new ArrayList<>();
 
-
+    public void gameReset() {
+        deck.clear();
+        this.setDeck();
+        dealerHand.clear();
+        playerHand.clear();
+        secondHand.clear();
+    }
 
     public List<String> getDeck() {
         return deck;
