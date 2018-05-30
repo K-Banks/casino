@@ -1,0 +1,18 @@
+{{#partial "content"}}
+
+    {{#if player.name}}
+        <h3>Hello {{player.name}}</h3>
+
+        <h4>Select a game to play from the games listed above</h4>
+        <h4>Your current money is ${{player.money}}</h4>
+    {{else}}
+        <form action="/" method="post">
+            <label for="playerName">What is your name?</label>
+            <input type="text" name="playerName" id="playerName">
+            <button type="submit" class="btn btn-info">Submit</button>
+        </form>
+    {{/if}}
+    
+{{/partial}}
+
+{{> layout.hbs}}
