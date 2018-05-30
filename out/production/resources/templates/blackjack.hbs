@@ -79,49 +79,7 @@
             </form>
         {{/if}}
     {{/if}}
-
-    <!--{{#if player.hasBet}}-->
-        <!--<h3>Current bet: {{player.currentBet}}</h3>-->
-        <!--<h3>{{player.name}}'s hand:</h3>-->
-        <!--{{#each game.playerHand}}-->
-            <!--<h4>{{this}}</h4>-->
-        <!--{{/each}}-->
-        <!--{{#if checkBlackjack }}-->
-            <!--<h2>Congratulations! you got a BlackJack. You Win!</h2>-->
-            <!--<h3>Your current balance: ${{player.money}}</h3>-->
-            <!--<h3><a href="/blackjack">Play again?</a></h3>-->
-            <!--<h3><a href="/">Home</a></h3>-->
-        <!--{{else}}-->
-            <!--{{#if playerBust}}-->
-                <!--<h2>You busted!</h2>-->
-                <!--<h3>Your current balance: ${{player.money}}</h3>-->
-                <!--<h3><a href="/blackjack">Play again?</a></h3>-->
-                <!--<h3><a href="/">Home</a></h3>-->
-
-            <!--{{else}}-->
-                <!--<h3>The dealer is showing</h3>-->
-                <!--<h4>{{dealerCard}}</h4>-->
-                <!--<p>Would you like to hit or stay?</p>-->
-                <!--<form action="/blackjack" method="post">-->
-                    <!--<select name="playerAction" id="playerAction">-->
-                    <!--<option value="stay">Stay</option>-->
-                    <!--<option value="hit">Hit</option>-->
-                <!--</select>-->
-                    <!--<button type="submit" class="btn, btn-info">Go!</button>-->
-                <!--</form>-->
-            <!--{{/if}}-->
-        <!--{{/if}}-->
-
-
-
-    {{else}}
-        <h3>Welcome to Blackjack {{player.name}}</h3>
-        <h4>You have ${{player.money}} what would you like to bet?</h4>
-        <form action="/blackjack" method="post">
-            <input type="number" name="playerBet" id="playerBet">
-            <button type="submit" class="btn btn-info">Deal</button>
-        </form>
-    {{/if}}
+    
 
 {{/partial}}
 
